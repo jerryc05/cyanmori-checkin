@@ -6,6 +6,8 @@ on:
 jobs:
   cyanmori-checkin:
     name: cyanmori-checkin
+    env: # Or as an environment variable
+      COOKIE: ${{ secrets.COOKIE }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
