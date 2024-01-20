@@ -2,6 +2,7 @@ name: my-workflow
 on:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch
 jobs:
   cyanmori-checkin:
     name: cyanmori-checkin
