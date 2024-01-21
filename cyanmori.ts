@@ -97,6 +97,10 @@ promises.push(
         '\tAmerica/New_York'
       )
       console.log(
+        new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }),
+        '\tAmerica/Los_Angeles'
+      )
+      console.log(
         new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }),
         '\tAsia/Shanghai'
       )
