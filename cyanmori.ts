@@ -1,7 +1,11 @@
-const { Octokit } = require('@octokit/rest')
-const sodium = require('libsodium')
+import { Octokit } from '@octokit/rest'
+import sodium from 'libsodium-wrappers'
 
-const octokit = new Octokit({ auth: process.env.GH_TOKEN })
+const cookie = process.env.COOKIE ?? ''
+const repo = process.env.REPOSITORY ?? '/'
+const token = process.env.GITHUB_TOKEN ?? ''
+
+const octokit = new Octokit({ auth: token })
 
 async function updateSecret(
   owner: string,
@@ -18,7 +22,8 @@ async function updateSecret(
 
   const messageBytes = Buffer.from(secretValue)
   const keyBytes = Buffer.from(key, 'base64')
-  const encryptedBytes = sodium.seal(messageBytes, keyBytes)
+  await sodium.ready
+  const encryptedBytes = sodium.crypto_box_seal(messageBytes, keyBytes)
   const encryptedValue = Buffer.from(encryptedBytes).toString('base64')
 
   await octokit.rest.actions.createOrUpdateRepoSecret({
@@ -36,7 +41,7 @@ function mergeCookies(existingCookies: string, setCookieHeaders: string[]) {
     const [name, value] = cookie.split('=')
     acc[name.trim()] = value
     return acc
-  }, {})
+  }, {} as { [key: string]: string })
 
   // Process each Set-Cookie header
   setCookieHeaders.forEach(header => {
@@ -66,7 +71,7 @@ promises.push(
       'sec-fetch-mode': 'cors',
       'sec-fetch-site': 'same-origin',
       'x-requested-with': 'XMLHttpRequest',
-      cookie: process.env.COOKIE,
+      cookie: cookie,
       Referer: 'https://cccc.gg/user',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
     },
@@ -77,15 +82,22 @@ promises.push(
       if (x.headers.get('Set-Cookie'))
         promises.push(
           updateSecret(
-            'jerryc05',
-            'cyanmori-checkin',
+            repo.split('/')[0],
+            repo.split('/')[1],
             'COOKIE',
-            mergeCookies(process.env.COOKIE, x.headers.getSetCookie())
+            mergeCookies(cookie, x.headers.getSetCookie())
           ).catch(console.error)
         )
       return x.json()
     })
     .then(console.log)
+    .then(() => {
+      console.log(
+        new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
+
+        new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
+      )
+    })
     .finally(console.error)
 )
 
