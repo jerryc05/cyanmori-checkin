@@ -86,7 +86,7 @@ promises.push(
             repo.split('/')[1],
             'COOKIE',
             mergeCookies(cookie, x.headers.getSetCookie())
-          ).catch(console.error)
+          )
         )
       return x.json()
     })
@@ -99,7 +99,6 @@ promises.push(
         new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
       )
     })
-    .finally(console.error)
 )
 
 await Promise.allSettled(promises)
