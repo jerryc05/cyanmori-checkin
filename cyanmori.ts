@@ -93,10 +93,12 @@ promises.push(
     .then(x => {
       console.log(x)
       console.log(
-        new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+        new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
+        '\tAmerica/New_York'
       )
       console.log(
-        new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
+        new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }),
+        '\tAsia/Shanghai'
       )
     })
 )
