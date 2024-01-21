@@ -8,6 +8,7 @@ jobs:
     name: cyanmori-checkin
     env: # Or as an environment variable
       COOKIE: ${{ secrets.COOKIE }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
