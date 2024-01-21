@@ -1,1 +1,15 @@
-{ "dependencies": { "@octokit/rest": "^20.0.2", "libsodium": "^0.7.13" } }
+{
+  "name": "my-workflow",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "libsodium": "^0.7.13"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
