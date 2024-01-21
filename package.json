@@ -1,1 +1,1 @@
-{ "dependencies": { "@octokit/rest": "^20.0.2", "tweetsodium": "^0.0.6" } }
+{ "dependencies": { "@octokit/rest": "^20.0.2", "libsodium": "^0.7.13" } }
