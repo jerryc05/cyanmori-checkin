@@ -1,5 +1,5 @@
 const { Octokit } = require('@octokit/rest')
-const sodium = require('tweetsodium')
+const sodium = require('libsodium')
 
 const octokit = new Octokit({ auth: process.env.GH_TOKEN })
 
