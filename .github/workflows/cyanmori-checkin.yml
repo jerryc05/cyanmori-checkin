@@ -8,7 +8,7 @@ jobs:
     name: cyanmori-checkin
     env: # Or as an environment variable
       COOKIE: ${{ secrets.COOKIE }}
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}  #! Needs write permission for secrets!!!!
       REPOSITORY: ${{ github.repository }}
     runs-on: ubuntu-latest
     steps:
