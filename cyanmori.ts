@@ -3,7 +3,7 @@ import sodium from 'libsodium-wrappers'
 
 const cookie = process.env.COOKIE ?? ''
 const repo = process.env.REPOSITORY ?? '/'
-const token = process.env.GITHUB_TOKEN ?? ''
+const token = process.env.GH_TOKEN ?? ''
 
 const octokit = new Octokit({ auth: token })
 

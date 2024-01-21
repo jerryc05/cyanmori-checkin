@@ -9,7 +9,6 @@ jobs:
     env: # Or as an environment variable
       COOKIE: ${{ secrets.COOKIE }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       REPOSITORY: ${{ github.repository }}
     runs-on: ubuntu-latest
     steps:
