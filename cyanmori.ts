@@ -90,8 +90,8 @@ promises.push(
         )
       return x.json()
     })
-    .then(console.log)
-    .then(() => {
+    .then(x => {
+      console.log(x)
       console.log(
         new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
       )
