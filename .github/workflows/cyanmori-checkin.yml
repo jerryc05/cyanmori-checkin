@@ -1,11 +1,10 @@
 name: cyanmori-checkin-workflow
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 jobs:
   cyanmori-checkin-job:
-    name: cyanmori-checkin
     runs-on: ubuntu-latest
     steps:
       - name: Login
