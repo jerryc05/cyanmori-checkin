@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Login
         run: |
-          curl 'https://cccc.gg/auth/login' \
+          echo $(curl 'https://cccc.gg/auth/login' \
           -H 'authority: cccc.gg' \
           -H 'accept: */*' \
           -H 'accept-language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7' \
@@ -26,11 +26,11 @@ jobs:
           -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36' \
           -H 'x-requested-with: XMLHttpRequest' \
           --data-raw '${{ secrets.CYANMORI_LOGIN_DATA }}' \
-          --compressed -b cookie.txt -c cookie.txt
+          --compressed -b cookie.txt -c cookie.txt)
 
       - name: Checkin
         run: |
-          curl 'https://cccc.gg/user/checkin' \
+          echo $(curl 'https://cccc.gg/user/checkin' \
           -X 'POST' \
           -H 'authority: cccc.gg' \
           -H 'accept: application/json, text/javascript, */*; q=0.01' \
@@ -46,4 +46,4 @@ jobs:
           -H 'sec-fetch-site: same-origin' \
           -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36' \
           -H 'x-requested-with: XMLHttpRequest' \
-          --compressed -b cookie.txt -c cookie.txt
+          --compressed -b cookie.txt -c cookie.txt)
