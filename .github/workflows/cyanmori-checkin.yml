@@ -1,20 +1,49 @@
 name: cyanmori-checkin-workflow
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: '0 * * * *'
   workflow_dispatch:
 jobs:
   cyanmori-checkin-job:
     name: cyanmori-checkin
-    env: # Or as an environment variable
-      COOKIE: ${{ secrets.COOKIE }}
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}  #! Needs write permission for secrets!!!!
-      REPOSITORY: ${{ github.repository }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
+      - name: Login
+        run: |
+          curl 'https://cccc.gg/auth/login' \
+          -H 'authority: cccc.gg' \
+          -H 'accept: */*' \
+          -H 'accept-language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7' \
+          -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+          -H 'origin: https://cccc.gg' \
+          -H 'referer: https://cccc.gg' \
+          -H 'sec-ch-ua: "Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"' \
+          -H 'sec-ch-ua-mobile: ?0' \
+          -H 'sec-ch-ua-platform: "macOS"' \
+          -H 'sec-fetch-dest: empty' \
+          -H 'sec-fetch-mode: cors' \
+          -H 'sec-fetch-site: same-origin' \
+          -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36' \
+          -H 'x-requested-with: XMLHttpRequest' \
+          --data-raw '${{ secrets.CYANMORI_LOGIN_DATA }}' \
+          --compressed -b cookie.txt -c cookie.txt
 
-      # run any `bun` or `bunx` command
-      - run: bun install --production
-      - run: bun cyanmori.ts
+      - name: Checkin
+        run: |
+          curl 'https://cccc.gg/user/checkin' \
+          -X 'POST' \
+          -H 'authority: cccc.gg' \
+          -H 'accept: application/json, text/javascript, */*; q=0.01' \
+          -H 'accept-language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7' \
+          -H 'content-length: 0' \
+          -H 'origin: https://cccc.gg' \
+          -H 'referer: https://cccc.gg/user' \
+          -H 'sec-ch-ua: "Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"' \
+          -H 'sec-ch-ua-mobile: ?0' \
+          -H 'sec-ch-ua-platform: "macOS"' \
+          -H 'sec-fetch-dest: empty' \
+          -H 'sec-fetch-mode: cors' \
+          -H 'sec-fetch-site: same-origin' \
+          -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36' \
+          -H 'x-requested-with: XMLHttpRequest' \
+          --compressed -b cookie.txt -c cookie.txt
