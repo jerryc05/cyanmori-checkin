@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Login
         run: |
-          echo $(curl 'https://cccc.gg/auth/login' \
+          echo -e $(curl 'https://cccc.gg/auth/login' \
           -H 'authority: cccc.gg' \
           -H 'accept: */*' \
           -H 'accept-language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7' \
@@ -30,7 +30,7 @@ jobs:
 
       - name: Checkin
         run: |
-          echo $(curl 'https://cccc.gg/user/checkin' \
+          echo -e $(curl 'https://cccc.gg/user/checkin' \
           -X 'POST' \
           -H 'authority: cccc.gg' \
           -H 'accept: application/json, text/javascript, */*; q=0.01' \
