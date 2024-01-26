@@ -41,7 +41,7 @@ if __name__ == "__main__":
         default_proxy = [x for x in proxy_groups if x["name"] == "🔰国外流量"][0]
         default_proxy["proxies"].clear()
         for strat in ("round-robin", "consistent-hashing"):
-            name = f"🏆多路负载均衡_{strat.title().replace('-','')}"
+            name = f"🏆LB_{strat.title().replace('-','')}"
             proxy_groups.insert(
                 0,
                 Group(
