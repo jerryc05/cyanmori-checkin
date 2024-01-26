@@ -1,6 +1,5 @@
 import sys
 import typing
-
 import yaml
 
 
