@@ -1,3 +1,4 @@
+name: bocusa-balance
 on:
   # schedule:
   #   - cron: '*/5 * * * *'

@@ -1,3 +1,4 @@
+name: cyanmori-checkin
 on:
   schedule:
     - cron: '0 */6 * * *'
