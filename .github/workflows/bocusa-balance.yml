@@ -23,5 +23,4 @@ jobs:
             -H 'sec-ch-ua-mobile: ?0' \
             -H 'sec-ch-ua-platform: "Windows"' \
             --data-raw "{\"accountNo\":\"${{ secrets.BOCUSA_ACCOUNT_NO }}\"}" \
-            --cookie "${{ secrets.BOCUSA_COOKIE }}" -c cookie.txt \
-            | jq '._data.respData.BOOK_BAL'
+            --cookie "${{ secrets.BOCUSA_COOKIE }}" -c cookie.txt # | jq '._data.respData.BOOK_BAL'
